@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function ajax(options) {
+      let type = options.type || 'get';
+      let url = options.url;
+      let data = options.data ? dataFormat(options.data) : '';
+      let success = options.success;
+
+      let xhr = new XMLHttpRequest();
+      if (data === '') {
+        xhr.open(type, url);
+      } else {
+        xhr.open(type, type === 'get' ? url + '?' + data : url);
+      }
+      if (type === 'get') {
+        xhr.send();
+      } else {
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(data);
+      }
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+          let res;
+          if (xhr.getResponseHeader('Content-Type').indexOf('json') !== -1) {
+            res = JSON.parse(xhr.responseText);
+          } else {
+            res = xhr.responseText;
+          }
+          success && success(res);
+        }
+      };
+    };
+
+
+    // 数据处理，将传入的数据转换为地址栏传入数据的形式
+    function dataFormat(data) {
+      var arr = [];
+      for (var k in data) {
+        arr.push(k + '=' + data[k]);
+      }
+      var result = arr.join('&');
+      return result;
+    };
+
+    // 数据检测
+    ajax({
+      type: 'post',
+      url: 'http://localhost:3005/common/post',
+      data: {
+        name: 'jack',
+        age: 18,
+        gender: '男'
+      },
+      success: function (res) {
+        console.log(res);
+      }
+    });
+  </script>
+</body>
+
+</html>

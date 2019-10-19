@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function ajax(params) {
+      // 若思传入数据的类型有，则传入，若没有，则默认是get方式
+      var type = params.type || 'get';
+      var url = params.url;
+      // 若是传入的数据，那么将其转化为地址栏中的数据形式，如没有则为空，若是数据为空。
+      var data = params.data ? dataFormat(params.data) : '';
+      // 保存成功函数
+      var success = params.success;
+
+      // 接下来是ajax请求的请求步骤
+      // 1.实例一个XMLHttpRequest对象
+      var xhr = new XMLHttpRequest();
+
+      // 2.建立连接
+      // 判断数据是否为空
+      if (data === '') {
+        xhr.open(type, url)
+      } else {
+        // 若是请求方式为 get 方式，那么要在建立连接的这一步发送数据，数据的形式为 地址?name1=data2&nane2=data2;
+        xhr.open(type, type === 'get' ? url + '?' + data : url);
+      }
+
+      // 3.发送请求
+      if (type === 'get') {
+        xhr.send();
+      } else {
+        // 若是请求方式为 post 则要在这一步发送数据
+        // 在post方式中还要设置请求头
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(data);
+      };
+
+      // 4.检测请求是否成功
+      xhr.onreadystatechange = function () {
+        // 当readystate为4是，表示数据传输完毕
+        if (xhr.readyState === 4) {
+          var res;
+          // 检测请求头，查看数据是不是json形式，若是则需要将其转换为普通数据形式
+          if (xhr.getResponseHeader('Content-Type').indexOf('json') !== -1) {
+            res = JSON.parse(xhr.responseText);
+          } else {
+            res = xhr.responseText;
+          }
+          // 若有数据，则通过成功方法将其返回，若无则只返回成功函数
+          success && success(res);
+        }
+      };
+
+    };
+
+
+
+    // 数据处理，将传入的数据转换为地址栏传入数据的形式
+    function dataFormat(data) {
+      var arr = [];
+      for (var k in data) {
+        arr.push(k + '=' + data[k]);
+      }
+      var result = arr.join('&');
+      return result;
+    };
+
+    // 数据检测
+    ajax({
+      type: 'post',
+      url: 'http://localhost:3005/common/post',
+      data: {
+        name: 'jack',
+        age: 18,
+        gender: '男'
+      },
+      success: function (res) {
+        console.log(res);
+      }
+    });
+  </script>
+</body>
+
+</html>
