@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #eaea;
+}
+
+h1 {
+  text-align: center;
+  margin: 50px 0;
+}
+
+h4 {
+  height: 20px;
+  overflow: hidden;
+}
+
+.box {
+  text-align: center;
+}

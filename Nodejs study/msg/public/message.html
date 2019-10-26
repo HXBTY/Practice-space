@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>留言板</title>
+  <link rel="stylesheet" href="/public/assets/bootstrap.css" />
+  <link rel="stylesheet" href="http://localhost:8181/public/assets/bootstrap.css" />
+
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="display-2">留言板</h1>
+    <hr />
+    <ul id="messages" class="list-unstyled">
+      内容放置的位置
+      <!-- <li class="media">
+        <img class="mr-3" src="./assets/avatar.png" alt="张三" />
+        <div class="media-body">
+          <h4>王五</h4>
+          <p>今天天气不错，适合跳舞~</p>
+          <p>1565948380678</p>
+        </div>
+      </li>
+      <li class="media">
+        <img class="mr-3" src="./assets/avatar.png" alt="张三" />
+        <div class="media-body">
+          <h4>李四</h4>
+          <p>今天天气不错，适合唱歌~</p>
+          <p>1565947780678</p>
+        </div>
+      </li>
+      <li class="media">
+        <img class="mr-3" src="./assets/avatar.png" alt="张三" />
+        <div class="media-body">
+          <h4>张三</h4>
+          <p>今天天气不错，适合写诗~</p>
+          <p>1565947380678</p>
+        </div>
+      </li> -->
+
+    </ul>
+    <hr />
+    <!-- method：表单数据的传递方式 -->
+    <!-- action:发送地址 -->
+    <!-- 表单元素中设置name属性，就可以传递对应的值 -->
+    <form action="/addMsg" method="post">
+      <div class="form-group">
+        <label for="txt_name">称呼：</label>
+        <input class="form-control" name="name" type="text" />
+      </div>
+      <div class="form-group">
+        <label for="txt_content">留言：</label>
+        <textarea class="form-control" name="content" cols="80" rows="10"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        提交
+      </button>
+    </form>
+    <br>
+  </div>
+</body>
+
+</html>
