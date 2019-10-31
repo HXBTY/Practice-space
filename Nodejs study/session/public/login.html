@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>登录页面</h1>
+  用户名:<input type="text" id="username">
+  密 码：<input type="text" id="password">
+  <button type="button" id="btn">登录</button>
+
+  <script src="./js/jquery.js"></script>
+  <script>
+    // 1 点击按钮
+    $('#btn').on('click', function () {
+      // 2 将用户名和密码发送给服务端
+      $.ajax({
+        type: 'post',
+        url: '/login',
+        data: {
+          username: $('#username').val(),
+          password: $('#password').val()
+        },
+        success: function (res) {
+          // 3 检测登录的结果
+          if (res.code === 200) {
+            location.href = '/index.html';
+          } else {
+            alert('登录失败');
+          }
+        }
+      });
+    });
+
+
+  </script>
+</body>
+
+</html>

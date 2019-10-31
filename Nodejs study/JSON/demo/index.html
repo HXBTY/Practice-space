@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+
+<body>
+  <h1>这是端口为5000的webserver的首页</h1>
+  <!-- 浏览器不会限制script标签请求非同源地址 -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
+  <!-- 提前设置一个fun函数，用来接收响应数据并进行处理 -->
+  <!-- <script>
+    // 这个success函数就相当于是ajax中的success回调函数
+    function hehehe(res) {
+      console.log(res);
+      alert(res);
+    }
+  </script>
+
+  <script src="http://localhost:8888/common/get?callback=hehehe"></script> -->
+
+  <!-- jQuery发送jsonp请求的方式 -->
+  <script src="./jquery.js"></script>
+  <script>
+    // jQuery为了省事，将JSONP的请求发送和$.ajax书写在了一个功能中
+    $.ajax({
+      // type: 'post', // jsonp发送时，设置post也没用
+      url: 'http://localhost:8888/common/get',
+      // 设置下面的属性后，jQuery会采用jsonp方式发送请求
+      dataType: 'jsonp',
+      success: function (res) {
+        console.log(res);
+      }
+    });
+
+
+  </script>
+</body>
+
+</html>
