@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  #container {
+    display: flex;
+  }
+
+  #center {
+    flex: 1;
+    background-color: #eaea;
+  }
+
+  #left {
+    /* flex属性时flex-grow、flex-shrink和flex-basis的简写，默认值为0 1 auto。后面两个属性可选。建议优先使用flex，而不是它们三个分开写 */
+    /* flex-grow属性定义了项目的放大比例，默认值为0，即如果存在剩余空间也不会放大 */
+    /* flex-shrink属性定义了项目的缩小比例 ，默认值为1，如果存在剩余空间也不会缩小*
+    /* flex-basis属性定义了分配在多余空间之前，项目占据的主轴空间。浏览器根据这个属性，计算主轴是否有多余空间。他的默认值为auto，即项目的本来大小 */
+    flex: 0 0 200px;
+    /* order:该属性规定了弹性容器中可伸缩项目在布局时的顺序，元素按照order属性的值的增序进行布局，拥有相同order属性值的元素按照他么在源代码中出现的顺序进行布局 */
+    /* order仅仅对元素的视觉顺序产生作用，并不会影响元素的逻辑或tab顺序，因此order不能用于非视觉媒体 */
+    order: -1; 
+    background-color: #cece;
+  }
+
+  #right {
+    flex: 0 0 150px;
+    background-color: #bee;
+  }
+</style>
+
+<body>
+  <div id="container">
+    <div id="center">fdsfasf4ewfedfcsadcfewacfa</div>
+    <div id="left">fewgghfgsdfefgafdfdaf</div>
+    <div id="right">fewfweafdsafew</div>
+  </div>
+</body>
+
+</html>
