@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" placeholder="请输入一个大于0的整数"><br />
+  <input type="button" value="开始"><br />
+  <input type="text" placeholder="开始倒计时">
+  <script>
+    let inPlace = document.getElementsByTagName('input')[0];
+    let btn = document.querySelector('body input:nth-child(3)');
+    let outPlace = btn.nextElementSibling.nextElementSibling;
+
+    btn.addEventListener('click', () => {
+      if (inPlace.value > 0) {
+        outPlace.value = inPlace.value;
+      } else {
+        outPlace.value = 1;
+      }
+      let cel = setInterval(() => {
+        outPlace.value--;
+        if (outPlace.value == 0) {
+          window.clearInterval(cel);
+        }
+      }, 1000)
+    })
+  </script>
+</body>
+
+</html>
