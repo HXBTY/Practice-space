@@ -15,6 +15,7 @@
       var obj = {}
       var num = 0
       for (var i = 0; i < str.length; i++) {
+				// 判断, 如果对象中没有该对象成员, 就将其添加进该对象种, 并给该对象成员赋值为1, 若是有, 则给该对象成员的值加一
         if (!obj[str[i]]) {
           obj[str[i]] = 1;
         } else {
