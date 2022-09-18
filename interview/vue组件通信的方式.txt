@@ -1,0 +1,26 @@
+1. 父子组件通信
+  最常用：父传子通过prop；子传父通过$emit;
+  ① 通过语法糖v-model双向绑定来实现，v-model会默认解析成为value的prop和input事件，但是本质还是通过事件来通知父组件修改数据；
+  ② 通过$parent或者$children对象来访问组件实例中的方法和属性
+  ③ vue2.3以上的版本还可以通过$listeners与.sync这两个属性
+    $listeners会将父组件中不含.native修饰器的事件监听器传递给子组件,子组件内部可以同故宫$listeners来自定义事件监听器
+    .sync是一个语法糖 
+    <!--父组件中-->
+    <input :value.sync="value" />
+    <!--以上写法等同于-->
+    <input :value="value" @update:value="v => value = v"></comp>
+    <!--子组件中-->
+    <script>
+      this.$emit('update:value', 1)
+    </script>
+
+2. 兄弟组件通信
+  通过查找父组件中在子组件实现兄弟间组件通信，this.$parent.$children，通过不同组件的name可以获得对应的组件，然后进行通信
+
+3. 跨多层组件通信
+  可以通过vue提供的provide/inject（注入）的方式实现，在父组件设置provide，之后不管是在多深层级的子组件，都可以通过inject获得
+
+4. 任意组件通信
+  通过vuex或者eventBus实现
+  eventBus原理：是通过发布订阅模式，创建一个空的vue实例，来实现vue组件间的通信。缺点：不方便维护，容易数据耦合。需要手动移除监听者，不然会发生重复获取数据的情况。
+  vuex原理：单例模式（不管创建多少次，都只会返回给你第一次创建的那个实例）

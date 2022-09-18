@@ -1,0 +1,34 @@
+vuex的基本使用：
+  1、设置status（需要管理的状态变量对象）
+  2、只能通过mutations中定义的方法进行变量状态的修改，mutations的第一个参数即为所管理的对象status，
+  在调用时通过vuex.commit('mutations中改变变量的方法名'，额外参数（非必要）)，且mutations必须说
+  同步函数
+  3、actions本质上提交的是mutations，而不是直接改变status，actions接受一个与vuex实例具有相同方法
+  的context对象。修改状态时可以通过context.commit提交一个mutaions，从而修改status。外部调用时通过
+  vuex.dispatch('actions')。actions支持异步
+  在开发时常用解构的方式：
+  actions: {
+  increment ({ commit }) {
+    commit('increment')
+  }}
+  // 以载荷形式分发
+  store.dispatch('incrementAsync', {
+    amount: 10
+  })
+
+  // 以对象形式分发
+  store.dispatch({
+    type: 'incrementAsync',
+    amount: 10
+  })
+  4、getters用于向外部提供一个快捷获取状态值的方法
+  5、辅助函数
+    mapGetters在计算属性中使用，通过结构的方式将status中的变量映射到局部对象属性中
+    ...mapGetters([
+      'doneTodosCount',
+      doneCount: 'doneTodosCount', // 自定义变量名
+      // ...
+    ])
+    mapMutations将mutation中的方法映射到methods中
+    mapActions将actions中的方法映射到methods中
+    mapStatus将status中的方法映射到计算属性中
