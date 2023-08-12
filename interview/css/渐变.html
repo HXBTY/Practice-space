@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style >
+    .content-one {
+      border: 1px solid #000;
+      width: 300px;
+      height: 300px;
+      /* linear-gradient 线性渐变只能用在background-image属性上 默认渐变方向为上到下 */
+      background-image: linear-gradient(#7c8d6e, blue);
+      /* 第一个参数可选渐变方向 */
+      background-image: linear-gradient(to left, red, blue);
+      background-image: linear-gradient(to bottom left, red, blue);
+      /* 可使用角度 */
+      background-image: linear-gradient(68deg, #303030, #8c9c9c);
+      /* 可使用多个颜色节点 */
+      background-image: linear-gradient(68deg, #494949, #e8c8e8, red);
+      /* 可使用透明度 */
+      background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+      /* 重复的线性渐变 */
+      background-image: repeating-linear-gradient(red, yellow 10%, green 20%);
+    }
+    .content-two {
+      border: 1px solid #000;
+      margin-top: 20px;
+      width: 300px;
+      height: 300px;
+      /* 径向渐变(中心渐变) */
+      background-image: radial-gradient(red, yellow, green);
+      /* 定义渐变形状 circle: 圆; ellipse: 椭圆; 默认为椭圆 */
+      background-image: radial-gradient(circle, red, skyblue, pink);
+      background-image: radial-gradient(ellipse, red, blue, green);
+      /* 定义渐变大小与位置 */
+      background-image: radial-gradient(closest-side at 60% 55%, skyblue, pink, green);
+      background-image: radial-gradient(farthest-side at 60% 55%, skyblue, pink, green);
+      background-image: radial-gradient(closest-corner at 60% 55%, skyblue, pink, green);
+      background-image: radial-gradient(farthest-corner, skyblue, pink, green);
+      /* 重复的径向渐变 */
+      background-image: repeating-radial-gradient(red, yellow 10%, green 15%);
+    }
+  </style>
+</head>
+<body>
+  <div class="content-one"></div>
+  <div class="content-two"></div>
+</body>
+</html>

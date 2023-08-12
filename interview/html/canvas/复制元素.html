@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .copy {
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 50px solid pink;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+  </body>
+  <script>
+    let canvas = document.querySelector("#canvas");
+    let c1 = canvas.getContext("2d");
+
+    let img = document.createElement("img");
+    img.height = 400;
+    img.src = "../../css/images/1.gif";
+    img.onload = function () {
+      /**
+       * 图片过大, 是会导致复制图片无法加载或者加载不全
+       * 解决方案就是创建临时画布用来加载图片, 然后再将加载图片之后的canvas传入待复制画笔
+       */
+      let autoImg = document.createElement("canvas");
+      autoImg.width = 200;
+      autoImg.height = 100;
+      let c2 = autoImg.getContext("2d");
+      /**
+       * drawImage() 向画布上绘制图像, 画布, 视频
+       * 语法1: drawImage(img,x,y);
+       * 语法2: drawImage(img,x,y,width,height);
+       * 语法3: drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+       * img: 限定使用图片, 视频, canvas
+       * sx: 开始裁剪位置x坐标; sy: 开始裁剪位置y坐标
+       * swidth: 裁剪图像的宽度; sheight: 裁剪图像的高度
+       * x: 图像放置x轴坐标; y: 图像放置y轴坐标
+       * width: 要使用的图像宽度; height: 要使用的图像高度
+       */
+      c2.drawImage(img, 0, 0, 200, 100);
+      /**
+       * createPattern() 在指定方向上重复指定元素
+       * context.createPattern(image,"repeat|repeat-x|repeat-y|no-repeat")
+       * image: 规定要使用图片, 视频或者其他canvase元素
+       * repeat: 默认值, 水平垂直方向上复制
+       * repeat-x: 水平方向上复制
+       * repeat-y: 垂直方向上复制
+       * no-repeat: 不复制
+       */
+      let cp = c1.createPattern(autoImg, "repeat");
+      c1.fillStyle = cp;
+      c1.fillRect(0, 0, 600, 400);
+    };
+    document.body.appendChild(img);
+    
+  </script>
+</html>

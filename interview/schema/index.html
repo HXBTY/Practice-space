@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>schema的封装(例子)</title>
+</head>
+<body>
+  <!-- 混合开发中使用封装操作客户端功能 -->
+  <!-- 利用iframe访问微信接口, 实现js访问客户端功能 -->
+  <button id="btnOne">扫一扫</button>
+  <button id="btnTwo">分享</button>
+  
+  <script src="./invoke.js"></script>
+  <script type="text/javascript">
+    document.getElementById('btnOne').onclick = () =>{
+      console.log('扫一扫');
+      window.invoke.scan({}, function() {})
+    }
+    document.getElementById('btnTwo').addEventListener('click', () => {
+      console.log('分享');
+      widon.invoke.share({
+        title: 'xxx',
+        content: 'yyyy'
+      }, function(result) {
+        if(result.errorNumber === 0) {
+          alert("分享成功")
+        } else {
+          alert("分享失败")
+        }
+      })
+    })
+  </script>
+</body>
+</html>

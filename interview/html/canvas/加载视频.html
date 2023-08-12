@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="canvas" height="400" width="600"></canvas>
+    <!-- <video id="video" controls src="../../css/images/2.mp4"></video> -->
+  </body>
+  <script>
+    let canvas = document.querySelector("#canvas");
+    let context = canvas.getContext("2d");
+    let video = document.createElement("video");
+    video.src = "../../css/images/2.mp4";
+    video.controls = true;
+    document.body.appendChild(video);
+
+    function render() {
+      if (video.ended) {
+        return
+      }
+      console.log(123);
+      // 请求动画帧 requestAnimationFrame() 传入一个回调函数 会定时调用
+      window.requestAnimationFrame(render);
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(
+        video,
+        0,
+        0,
+        context.canvas.width,
+        context.canvas.height
+      ); //绘制视频
+    }
+    video.onloadeddata = function () {
+      render();
+    };
+    video.play = function () {
+      render()
+    }
+  </script>
+</html>

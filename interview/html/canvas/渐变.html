@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas class="one" width="600" height="300"></canvas>
+  </body>
+  <script>
+    // canvas绘画全在js中完成
+    // 获取画板
+    let canvas = document.querySelector(".one");
+    // 获取画笔 上下文对象
+    let c1 = canvas.getContext("2d");
+
+    // 绘制图像
+
+    /**
+     * 线性渐变
+     * creatLinearGradient(x0, y0, x1, y1) 参数为坐标点
+     * 返回一个线性渐变的对象
+     * x0: x轴渐变起点坐标, x1: 终点坐标; y0与y1同理
+     * 使用时所返回的对象作为strokeStyle(画笔颜色) 或 fillStyle(填充颜色)的值
+     */
+    let clg = c1.createLinearGradient(0, 0, 100, 100);
+    /** 
+     * addColorStop(stop, color) 设置渐变颜色节点的终点位置与颜色
+     * stop的值为[0.0-1.0]之前的数
+     * 有多少个颜色就设置多少个
+     * 与createLinearGradient(), createRadialGradient()一起使用
+     * 使用渐变必须设置addColorStop()
+     */
+    clg.addColorStop(0, "skyblue");
+    clg.addColorStop(1, "red");
+
+    // c.fillStyle = clg; // 设置填充颜色
+    // c.fillRect(0, 0, 200, 100); // fillRect(x, y, width, heiht) 绘制一个填充的矩形
+    c1.strokeStyle = clg; // 设置画笔颜色
+    c1.strokeRect(0, 0, 200, 100); // fillRect(x, y, width, heiht) 绘制一个无填充的矩形
+
+    // 设置第二个画笔
+    let c2 = canvas.getContext('2d')
+    /**
+     * 径向渐变
+     * createRadialGradient(x0,y0,r0,x1,y1,r1)
+     * x0: x轴起点; y0: y轴起点; r0: 开始圆半径
+     * x1: x轴终点; y1: y轴终点; r0: 结束圆半径
+     */
+    let crg = c2.createRadialGradient(500, 50, 10, 500, 50, 50)
+    crg.addColorStop(0, 'skyblue')
+    crg.addColorStop(0.3, 'red')
+    crg.addColorStop(.6, 'yellow')
+    crg.addColorStop(1, 'black')
+
+    c2.fillStyle = crg
+    c2.fillRect(400, 0, 200, 100)
+  </script>
+</html>

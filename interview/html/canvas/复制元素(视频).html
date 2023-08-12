@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .copy {
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 50px solid pink;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+  </body>
+  <script>
+    let canvas = document.querySelector("#canvas");
+    let c1 = canvas.getContext("2d");
+
+    let video = document.createElement("video");
+    video.src = "../../css/images/2.mp4";
+    video.controls = true;
+    document.body.appendChild(video);
+
+    let autoVideo = document.createElement("canvas");
+    autoVideo.width = 200;
+    autoVideo.height = 100;
+    let c2 = autoVideo.getContext("2d");
+    let cp = null;
+
+    render;
+    function render() {
+      window.requestAnimationFrame(render);
+      c2.clearRect(0, 0, canvas.width, canvas.height);
+      c2.drawImage(video, 0, 0, 200, 100);
+      cp = c1.createPattern(autoVideo, "repeat");
+      c1.fillStyle = cp;
+      c1.fillRect(0, 0, 600, 400);
+    }
+    video.onloadeddata = function () {
+      render();
+    };
+
+  </script>
+</html>
