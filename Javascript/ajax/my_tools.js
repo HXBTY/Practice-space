@@ -63,11 +63,11 @@
   my.post = function (url, data, success) {
     let xhr = new XMLHttpRequest();
 
-    let datas = data ? dataFormat(data) : '';
+    let dataArray = data ? dataFormat(data) : '';
 
     xhr.open('post', url);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send(datas);
+    xhr.send(dataArray);
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4) {
         let res;
