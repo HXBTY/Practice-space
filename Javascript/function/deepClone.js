@@ -17,13 +17,13 @@
  *      ① 无法保持引用
  *      ② 当数据的层次很深, 会栈溢出
  */
-function deepCopy(source) {
+function deepCopyRecursion(source) {
     if (!isObject(source)) return source; //如果不是对象的话直接返回
     let target = Array.isArray(source) ? [] : {} //数组兼容
-    for (var k in source) {
+    for (const k in source) {
         if (source.hasOwnProperty(k)) {
             if (typeof source[k] === 'object') {
-                target[k] = deepCopy(source[k])
+                target[k] = deepCopyRecursion(source[k])
             } else {
                 target[k] = source[k]
             }
@@ -120,7 +120,9 @@ console.log(returnedTarget); // { a: 1, b: 4, c: 5 }
 /*
  *  8. MessageChannel 实现深拷贝
  *  虽然能实现深拷贝, 但是拷贝有函数的对象时, 会报错
- *  MessageChannel 接口允许创建一个新的消息通道, 斌通过它的两个MessagePort发送数据, MessageChannel接口实例化后, 会有两个属性 prot1 和 prot2
+ *  MessageChannel 接口允许创建一个新的消息通道, 通过它的两个 MessagePort 发送数据,
+ *  MessageChannel 接口实例化后, 会有两个 messagePort 属性发送参数
+ *  此特性在 web worker 中可用
 */
 let obj = {a: 1, b: {c: 2, d: 3,}, f: undefined}
 obj.c = obj.b;
@@ -140,5 +142,5 @@ function deepCopy(obj) {
 deepCopy(obj).then((copy) => { // 请记住`MessageChannel`是异步的这个前提！
     let copyObj = copy;
     console.log(copyObj, obj);
-    console.log(copyObj == obj);
+    console.log(copyObj === obj);
 });
