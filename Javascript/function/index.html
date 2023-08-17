@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试function</title>
+</head>
+<body>
+<button>复制</button>
+
+</body>
+<!--复制到剪贴板-->
+<script src="./clipboard.js"></script>
+<script>
+    let btn = document.getElementsByTagName("button")[0];
+    btn.addEventListener("click", () => {
+        execCommand("我要被 execCommand 复制啦！！")
+        writeText("我要被 writeText 复制啦！！")
+    })
+</script>
+</html>
