@@ -2,7 +2,7 @@ new Promise((resolve, reject) => {
     console.log('执行一个promise函数');
 //    resolve('success')
 //    reject('error') // reject 如果不是抛出一个异常的话，则最后虽然走的还是catch，但是promise的状态是resolved
-    reject(new Error('erroe'))
+    reject(new Error('error'))
 })
     .then(res => {
         console.log('resolve', res);
