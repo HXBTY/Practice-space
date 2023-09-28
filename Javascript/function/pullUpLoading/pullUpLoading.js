@@ -51,10 +51,10 @@ function throttle(methods, context) {
 }
 
 window.addEventListener("scroll", () => {
-    // 滚动距离与视图大小应该大于等于实际的文档高度
-    if (getScrollTop() + getClientHeight() >= getScrollHeight()) {
-        // console.log("加载到底部了")
-        alert("加载到底部了")
+    // 滚动距离与视图大小应该大于等
+    // 预留 100 的高度，手机端不同的浏览器计算出来的滚动高度可能不同
+    if (getScrollTop() + getClientHeight() + 100 >= getScrollHeight()) {
+        console.log("加载到底部了")
         // TODO 在这里进行下拉加载的判断, throttle(loadFunction) 调用加载下一页方法
         // throttle()
     }
