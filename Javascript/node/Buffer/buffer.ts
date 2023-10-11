@@ -1,15 +1,13 @@
-/* buffer 将数据转换为表示固定长度的字节序列 */
+/* Buffer 将数据转换为表示固定长度的字节序列 */
 // buffer是在node全局中都可以使用，但是node官方还是建议显式引用它
-
-// 
 
 import { Buffer } from 'node:buffer'
 
-// buffer.from 将指定数据
+// Buffer.from 将指定数据
 const buffer1 = Buffer.from('123')
 const buffer2 = Buffer.from([1, 2, 3])
 
-// buffer.alloc 指定长短
+// Buffer.alloc 指定长短
 // Buffer.alloc(size[, fill[, encoding]])
 const buffer3 = Buffer.alloc(10)
 const buffer4 = Buffer.alloc(12, 2) // 第二个参数为用于填充的值，若没有，则是默认填充0
