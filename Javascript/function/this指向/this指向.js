@@ -1,3 +1,10 @@
+/**
+ * this的指向
+ * 1. 当函数被调用时，函数的this指向调用者
+ * 2. 在严格模式中，this指向undefined
+ * 3. call、apply、bind可以改变this的指向，他们的第一个参数就是他们this的指向
+ * 4. 箭头函数本身没有this，它的this指向最近的父级
+ */
 // 在函数中的this指向调用者, 谁调用函数就指向谁
 let obj1 = {
   a: 123,
