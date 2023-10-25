@@ -10,14 +10,14 @@ const nunjucks = require("koa-nunjucks-2")
 const staticFiles = require("koa-static")
 
 const app = new Koa()
-const router = require("./homeView/home")
+const router = require("./router/index")
 
 // 指定public为指定静态文件目录
 app.use(staticFiles(path.resolve(__dirname, "./public")))
 
 app.use(nunjucks({
     ext: "html",
-    path: path.join(__dirname, "homeView"),
+    path: path.join(__dirname, "controller", "home"),
     nunjucksConfig: {
         trimBlocks: true // 开启转义 防止xss
     }
