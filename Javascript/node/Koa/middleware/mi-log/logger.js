@@ -9,12 +9,13 @@ const baseInfo = {
     serverIp: "0.0.0.0" // 默认服务器地址
 };
 const {env, appLogLevel, dir, projectName, serverIp} = baseInfo;
-// 用于存储公用日志信息
-const commonInfo = {projectName, serverIp}
 
-module.exports = () => {
+module.exports = (options) => {
     const contextLogger = {};
     const appenders = {}
+    const opt = Object.assign({}, baseInfo, options || {});
+    const { env, appLogLevel, dir, projectName, serverIp } = opt;
+    const commonInfo = { projectName, serverIp }
     appenders.cheese = {
         type: "dateFile",
         filename: `${dir}/cheese`, // 输出的文件名

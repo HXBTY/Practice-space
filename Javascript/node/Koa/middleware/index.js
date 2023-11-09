@@ -1,18 +1,25 @@
 /**
  * 集中调用中间件
  */
-const path = require("path")
-const bodyParser = require("koa-bodyparser")
+const path = require("path");
+const bodyParser = require("koa-bodyparser");
 // 引入 koa-nunjucks-2 对渲染的模板进行转移,避免xss
-const nunjucks = require("koa-nunjucks-2")
+const nunjucks = require("koa-nunjucks-2");
 // 引入 koa-static 用于处理静态文件
-const staticFiles = require("koa-static")
+const staticFiles = require("koa-static");
+const ip = require("ip");
 const miSend = require("./mi-send");
-const miLog = require("./mi-log")
+const miLog = require("./mi-log");
 
 module.exports = (app) => {
     // 注册中间件
-    app.use(miLog())
+    app.use(miLog({
+        env: app.env,
+        projectName: "Koa",
+        appLogLevel: "debug",
+        dir: "logs",
+        serverIp: ip.address()
+    }))
     // 指定public为指定静态资源文件目录
     app.use(staticFiles(path.resolve(__dirname, "../", "./public")))
     app.use(nunjucks({
