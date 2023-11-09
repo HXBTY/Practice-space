@@ -12,6 +12,10 @@ const staticFiles = require("koa-static")
 const app = new Koa()
 const router = require("./router/index")
 
+// 引入中间件
+const middleware = require("./middleware/index")
+middleware(app);
+
 // 指定public为指定静态文件目录
 app.use(staticFiles(path.resolve(__dirname, "./public")))
 
