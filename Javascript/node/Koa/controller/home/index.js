@@ -1,6 +1,5 @@
 const home = {
     login: async (ctx, next) => {
-        console.log("ll")
         await ctx.render("login", {
             btnName: "GoGoGo"
         })
