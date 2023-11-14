@@ -1,9 +1,10 @@
 const log4js = require("log4js");
 const access = require("./access")
+const path = require("path");
 const methods = ["trace", "debug", "info", "warn", "error", "fatal", "mark"];
 const baseInfo = {
     appLogLevel: "debug", // 指定日志级别
-    dir: "../../logs", // 指定日志存放目录
+    dir: path.resolve(__dirname, "../", "logs"), // 指定日志存放目录
     env: "div", // 指定当前环境
     projectName: "Koa", // 项目名
     serverIp: "0.0.0.0" // 默认服务器地址

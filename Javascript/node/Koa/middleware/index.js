@@ -21,7 +21,7 @@ module.exports = (app) => {
         env: app.env,
         projectName: "Koa",
         appLogLevel: "debug",
-        dir: "logs",
+        dir: path.resolve(__dirname, "../", "logs"),
         serverIp: ip.address()
     }))
     // 指定public为指定静态资源文件目录
