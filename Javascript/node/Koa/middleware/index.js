@@ -11,9 +11,27 @@ const ip = require("ip");
 const miSend = require("./mi-send");
 const miLog = require("./mi-log");
 const miHttpError = require("./mi-http-error");
+const miRule = require("./mi-rule");
 
 module.exports = (app) => {
     // 注册中间件
+    /**
+     * 指定 controller 文件夹下的js文件，挂在在app.controller属性上
+     * 指定service文件夹下的js文件，挂载在app.service属性上
+     */
+    miRule({
+        app,
+        rules: [
+            {
+                path: path.join(__dirname, "../controller"),
+                name: "controller"
+            },
+            {
+                path: path.join(__dirname, "../service"),
+                name: "service"
+            }
+        ]
+    })
     app.use(miHttpError({
         errorPageFolder: path.resolve(__dirname, "../", "public", "html", "errorPage")
     })); // 错误中间件放到洋葱模型的最上层

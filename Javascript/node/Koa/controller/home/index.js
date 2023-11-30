@@ -11,6 +11,12 @@ const home = {
         } else {
             ctx.response.body = "<h1>请输入正确的账号与密码</h1>"
         }
+    },
+    register: async(ctx, next) => {
+        const { app } = ctx;
+        let params = ctx.request.body;
+        let name = params.name;
+        let password = params.password;
     }
 }
 module.exports = home;

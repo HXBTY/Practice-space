@@ -6,7 +6,7 @@
 ├─ middleware/          // 中间件集中地，用于编写中间件，并集中调用
 │  ├─ mi-http-error/
 │  ├─ mi-log/
-│  ├─ mi-send/
+│  ├─ mi-send.js
 │  └── index.js
 ├─ public/              // 用于放置静态资源
 ├─ views/               // 用于放置模板文件，返回客户端的视图层
