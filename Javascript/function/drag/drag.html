@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag拖拽</title>
+    <style>
+        .drag-box {
+            background-color: pink;
+        }
+
+        .drag-item {
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+            line-height: 200px;
+            background-color: skyblue;
+        }
+
+        .target-box {
+            margin-top: 20px;
+            height: 200px;
+            background-color: greenyellow;
+        }
+
+        .dragging {
+            opacity: .5;
+        }
+
+        .dragover {
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+<div class="drag-box dropzone">
+    <span draggable="true" class="drag-item">item-1</span>
+    <span draggable="true" class="drag-item">item-2</span>
+    <span draggable="true" class="drag-item">item-3</span>
+</div>
+<div class="target-box dropzone"></div>
+<script>
+    let dragged = null;
+
+    function addDrag(dom, callback) {
+        if (dom instanceof Element) {
+            dom.addEventListener("drag", (event) => {
+                callback && callback(event)
+            })
+        }
+    }
+
+    function addDragstart(dom, callback) {
+        if (dom instanceof Element) {
+            dom.addEventListener("dragstart", (event) => {
+                dragged = event.target
+                event.target.classList.add("dragging")
+                callback && callback(event);
+            })
+        }
+    }
+
+    function addDragend(dom, callback) {
+        if (dom instanceof Element) {
+            dom.addEventListener("dragend", (event) => {
+                event.target.classList.remove("dragging")
+                callback && callback(event);
+            })
+        }
+    }
+
+    function addDragover(dom, callback) {
+        if (dom instanceof Element) {
+            dom.addEventListener("dragover", (event) => {
+                event.preventDefault();
+                callback && callback(event);
+            }, false)
+        }
+    }
+
+    function addDragenter(dom, callback) {
+        if (dom instanceof Element) {
+            dom.addEventListener("dragenter", (event) => {
+                if (event.target.classList.contains("dropzone")) {
+                    event.target.classList.add("dragover");
+                }
+                callback && callback(event);
+            })
+        }
+    }
+
+    function addDragleave(dom, callback) {
+        if (dom instanceof Element) {
+            dom.addEventListener("dragleave", (event) => {
+                if (event.target.classList.contains("dropzone")) {
+                    event.target.classList.remove("dragover");
+                }
+                callback && callback(event);
+            })
+        }
+    }
+
+    function addDrop(dom, callback) {
+        if (dom instanceof Element) {
+            dom.addEventListener("drop", (event) => {
+                callback && callback(event)
+            })
+        }
+    }
+
+    let itemArr = document.querySelectorAll(".drag-item");
+    itemArr = Array.from(itemArr);
+    itemArr.forEach(item => {
+        addDrag(item)
+        addDragstart(item)
+        addDragend(item)
+    })
+    const targetDom = document.querySelector(".target-box")
+    addDragover(targetDom)
+    addDragenter(targetDom)
+    addDragleave(targetDom)
+    addDrop(targetDom, (event) => {
+        event.preventDefault();
+        if (event.target.classList.contains("dropzone")) {
+            event.target.classList.remove("dragover")
+            dragged.parentNode.removeChild(dragged)
+            event.target.appendChild(dragged)
+        }
+    })
+</script>
+</body>
+</html>
