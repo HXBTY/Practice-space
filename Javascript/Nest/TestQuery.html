@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TestQuery</title>
+</head>
+<body>
+<script>
+    function fetchQuery(url, param) {
+        fetch(url).then(res => {
+            console.log(res)
+        })
+    }
+    fetchQuery("http://localhost:3000/api/person/111")
+</script>
+</body>
+</html>
