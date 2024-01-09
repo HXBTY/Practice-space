@@ -2,17 +2,17 @@
  * 与路径相关
  */
 
-const location = window.location;
-// 获取当前页面路径上的域名
-const baseUrl = location.origin;
-// 跳转新页面 这种方式跳转页面会被保存到历史会话中, 点击返回会返回之前一页
-location.assign("新页面地址");
-// 设置当前页面地址 也能实现跳转新页面的功能
-location.href = "新页面地址";
-// 替换当前页面路径 使用这种方式调准啊页面不会保存到历史会话中, 点击返回不会返回之前一页
-location.replace("新页面地址");
-// 重新加载当前页面
-location.reload();
+// const location = window.location;
+// // 获取当前页面路径上的域名
+// const baseUrl = location.origin;
+// // 跳转新页面 这种方式跳转页面会被保存到历史会话中, 点击返回会返回之前一页
+// location.assign("新页面地址");
+// // 设置当前页面地址 也能实现跳转新页面的功能
+// location.href = "新页面地址";
+// // 替换当前页面路径 使用这种方式调准啊页面不会保存到历史会话中, 点击返回不会返回之前一页
+// location.replace("新页面地址");
+// // 重新加载当前页面
+// location.reload();
 
 /**
  * 获取地址域名
@@ -42,4 +42,19 @@ function getURLParameters(url) {
             {}
         )
     }
+}
+
+/**
+ * @description 根据url获取url上的参数并转为对象
+ * @param url
+ * @return {*}
+ */
+function getUrlParametersTwo(url) {
+    const queryParam = url.split("?")[1]
+    const urlParam = new URLSearchParams(queryParam)
+    let result = {}
+    for (let [key, value] of urlParam.entries()) {
+        result[key] = value
+    }
+    return result
 }
