@@ -1,0 +1,20 @@
+.calendar {
+    border: 1px solid #666666;
+    padding: 20px;
+    width: 300px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.days {
+    display: grid;
+    text-align: center;
+    line-height: 30px;
+    grid-template-columns: repeat(7, calc(100%/7));
+}
+.day:hover, .select {
+    background-color: #ccc;
+    cursor: pointer;
+}
