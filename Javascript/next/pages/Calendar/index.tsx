@@ -107,8 +107,11 @@ function Test() {
             calendarRef.current?.setDate(new Date(2024, 3, 1))
         }, 2000)
     }, [])
+    const [date, setDate] = useState(new Date("2024-1-1"))
     return <div>
-        <Calendar ref={calendarRef} value={new Date("2024-1-1")} ></Calendar>
+        <Calendar ref={calendarRef} value={date} onChange={(date) => {
+            calendarRef.current?.setDate(date)
+        }}></Calendar>
     </div>
 }
 
