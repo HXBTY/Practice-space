@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form>
+  <label for="username">用户名：</label>
+  <!-- 方案1 设置autocomplete为“off”关闭状态 可以限制普通输入框不进行之前输入的提示，也可限制表单的自动填充 -->
+  <input type="text" id="username" name="username" autocomplete="off">
+  <label for="password">密码：</label>
+  <input type="text" id="password" name="password" autocomplete="off">
+  <input type="submit" value="登录">
+</form>
+</body>
+<script type="text/javascript">
+  <!-- 方案2 通过js设置修改密码输入框的类型，限制自动填充密码 -->
+  const passwordDom = document.querySelector("#password");
+  passwordDom.addEventListener("focus", () => {
+    passwordDom.setAttribute("type", "password");
+  })
+  passwordDom.addEventListener("blur", () => {
+    passwordDom.setAttribute("type", "text")
+  })
+</script>
+</html>
