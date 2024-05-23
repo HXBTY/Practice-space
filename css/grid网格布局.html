@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>grid网格布局</title>
+  <style type="text/css">
+    .grid-box {
+        display: grid;
+        background-color: skyblue;
+        /*
+          grid-template-columns 设置列数
+          1fr 与 flex布局中的flex: 1; 作用类似
+          占有剩余部分的1份
+        */
+        /*grid-template-columns: 80px 1fr 1fr;*/
+        /* repeat(times, value) times：重复的次数；value 重复的值 */
+        /*grid-template-columns: 1fr repeat(4, 100px); !* 设置一行5列， 第一列宽度1fr 后四列每列100px *!*/
+        grid-template-columns: repeat(auto-fill, 100px); /* 设置每列宽度100px，个数填满一行宽度 */
+        /*grid-template-columns: minmax(100px, max-content) repeat(auto-fill, 100px); !* 第一行的宽度设置返回最小100px，最大为内容宽度 *!*/
+        /*grid-template-columns: [c1] 100px [c2] 100px [c3] 100px [c4]; !* [name] 给网格线命名 *!*/
+        /*
+          设置表格行的高度 如果一行一行设置，那么第一个值就是第一行，依次类推
+        */
+        /*grid-template-rows: 100px 100px;*/
+        grid-template-rows: repeat(auto-fill, auto); /* 设置行高度为 auto */
+
+        row-gap: 20px; /* 设置行与行之间的间隔 */
+        column-gap: 20px; /* 列与列之间的间隔 */
+        gap: 30px 40px; /* 简写行间隔与列间隔 */
+
+        grid-template-areas: "a a a a" "b b b b" "c c c c"; /* 该属性用于指定“区域”，区域可以是由单个或多个单元格组成 */
+        /*
+          设置单元格的排列方式
+          row：列优先
+          column：行优先
+          row dense：先行后列，并且有空隙时尽可能紧密排列
+          column dense：先列后行，并且有空隙时尽可能紧密排列
+         */
+        grid-auto-flow: column dense;
+
+        /**
+          用于设置容器内单元格内容的水平位置
+          start end | center | stretch（拉伸占满单元格整个宽度）
+         */
+        justify-items: stretch;
+        /**
+          设置单元个内部内容垂直方向位置
+          start end | center | stretch（拉伸占满单元格整个高度）
+        */
+        align-items: center;
+        /**
+          是justify-items与align-items的简写
+          place-items: <align-items> <justify-items>
+         */
+        place-items: stretch center;
+        /**
+          当一些单元格没有被设置宽或者高，通过grid-auto-columns、grid-auto-rows来设置多余的列宽与行高
+         */
+        grid-auto-columns: 60px;
+        grid-auto-rows: 150px;
+    }
+
+    .item:nth-child(3) {
+        background-color: pink;
+        grid-area: a; /* 指定单元格所属的区域完成区域划分 */
+    }
+    .item {
+        width: 80px;
+    }
+    .item:nth-child(5) {
+        background-color: greenyellow;
+        /**
+          单元格根据网格线设置起始与结束位置
+          列：从第四根列网格线开始，第六根网格线结束，占两列
+          行：从第一个行网格线开始，到第三根网格线结束，占两行
+         */
+        grid-column-start: 4; /* 值还可以是成网格线的名称 */
+        grid-column-end: 6;
+        grid-row-start: 1;
+        /*grid-row-start: span 1; !* span关键字，指定跨越多少网格 *!*/
+        grid-row-end: 3;
+        /* grid-row: <grid-row-start> / <grid-row-end> */
+        grid-column: 4 / 6;
+        /* grid-column: <grid-column-start> / <grid-column-end> */
+        grid-row: 1 / 3;
+    }
+    .item:nth-child(7) {
+        background-color: orange;
+        justify-self: start;
+        align-self: end;
+        /* place-self: <align-self> <justify-self> */
+        place-self: start end;
+    }
+  </style>
+</head>
+<body>
+<div class="grid-box">
+  <p class="item">Lorem ipsum dolor sit amet consectetur.</p>
+  <p class="item">Accusamus corporis eligendi quasi quod tenetur.</p>
+  <p class="item">Asperiores aut excepturi recusandae sed voluptatibus.</p>
+  <p class="item">Architecto eius eos ipsam obcaecati voluptates!</p>
+  <p class="item">Eligendi non nulla quisquam quos voluptatibus.</p>
+  <p class="item">Itaque odit pariatur provident sint voluptatum?</p>
+  <p class="item">Debitis dolorum est nam quis vero!</p>
+  <p class="item">Aliquam et eveniet exercitationem quo ratione!</p>
+  <p class="item">Assumenda ea eius itaque nemo nesciunt!</p>
+  <p class="item">Corporis fugit ipsum libero repudiandae sed!</p>
+  <p class="item">A consectetur exercitationem reiciendis sint tenetur?</p>
+  <p class="item">Eius exercitationem magni mollitia officia similique.</p>
+  <p class="item">Aliquam aperiam eaque exercitationem quasi tempora.</p>
+  <p class="item">Illo ipsam laborum maxime necessitatibus porro.</p>
+  <p class="item">Accusantium et excepturi ipsa praesentium sed.</p>
+</div>
+</body>
+</html>
