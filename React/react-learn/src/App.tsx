@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import './App.css';
 
 import { Link, Outlet } from "react-router-dom";
@@ -6,7 +6,9 @@ import { Link, Outlet } from "react-router-dom";
 function App() {
   return (
     <div>
-      <Link to={"/test"}>to test</Link>
+      <header className="header">
+        <Link to={"/mutateObserver"}>mutateObserver</Link>
+      </header>
       <Outlet />
     </div>
   );
