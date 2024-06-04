@@ -1,3 +1,5 @@
+// 封装MutationObserver，用于监听dom、dom属性以及子节点的变化
+
 import { useEffect } from "react";
 
 const defaultOptions: MutationObserverInit = {
