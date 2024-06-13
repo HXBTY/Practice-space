@@ -15,7 +15,7 @@ async function queryData() {
  * userState 返回一个数组，包含state与setXXX的spi，通常使用结构语法获取
  * 只能用于同步逻辑，不能用于异步
  */
-function stateTest() {
+function StateTest() {
     /**
      * setXXX 有两种传值
      * 直接传入一个新的值 setNmu(num + 1)
@@ -37,7 +37,7 @@ function stateTest() {
  *  - 如果没传，则每次都执行，如果传了，则只执行一次
  *  - 可以通过改变数组中的值，来执行effect函数
  */
-function effectTest() {
+function EffectTest() {
     const [effectNum, setEffectNum] = useState(0)
     useEffect(() => {
         queryData().then(res => {
@@ -57,7 +57,7 @@ function effectTest() {
  *  useEffect 的执行在操作dom之后异步执行，但是由于react的渲染时间间隔是固定的，会有两种情况①渲染前执行，②渲染后执行，因此可能会出现页面善动的问题
  *  useLayoutEffect 的会在操作dom之后同步执行，因此会在页面渲染之前执行，则不会有闪动问题，但是如果effect阻塞了，则会导致渲染阻塞，因此大部分时候还是使用 useEffect
  */
-function layoutEffectTest() {
+function LayoutEffectTest() {
     const [layoutEffectNum, setLayoutEffectNum] = useState(0)
     useLayoutEffect(() => {
         queryData().then(res => {
@@ -105,7 +105,7 @@ function reducer(state: Data, action: Action) {
  * 用于封装一个固定的操作，执行时通过action触发
  * 也可以通过第二种重载的使用方式，使用函数来创建初始值，这时第二个参数则变成了传入函数的参数
  */
-function reducerTest() {
+function ReducerTest() {
     // const [res, dispatch] = useReducer<Reducer<Data, Action>>(reducer, {result: 1})
     const [res, dispatch] = useReducer<Reducer<Data, Action>, string>(reducer, 'zero', param => {
         return {
@@ -128,7 +128,7 @@ function reducerTest() {
  * ref的内容保存至 current 上
  * 一般用来存放一些不用于渲染的内容
  */
-function refTest() {
+function RefTest() {
     const inputRef = useRef<HTMLInputElement>(null)
     useEffect(() => {
         // 自动获取焦点
@@ -140,12 +140,12 @@ function refTest() {
     </div>
 }
 
-export default function useHookTest() {
+export default function App() {
     return <>
-        {stateTest()}
-        {effectTest()}
-        {layoutEffectTest()}
-        {reducerTest()}
-        {refTest()}
+        {StateTest()}
+        {EffectTest()}
+        {LayoutEffectTest()}
+        {ReducerTest()}
+        {RefTest()}
     </>
 }
