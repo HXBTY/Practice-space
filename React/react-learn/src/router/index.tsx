@@ -6,6 +6,7 @@ import UseContextTest from "../view/hookTest/useContextTest"
 import UseForwardRefTest from "../view/hookTest/useForwardRefTest"
 import UseHookTest from "../view/hookTest/useHookTest";
 import UseMemoTest from "../view/hookTest/useMemoTest";
+import Calendar from "../view/Calendar";
 
 const routes = [
   {
@@ -31,6 +32,10 @@ const routes = [
       {
         path: "useMemoTest",
         element: <UseMemoTest />
+      },
+      {
+        path: "calendar",
+        element: <Calendar />
       }
     ]
   },

@@ -1,9 +1,9 @@
 import "./index.scss"
-import {CalendarProps} from "@/pages/Calendar/Calendar";
+import {CalendarProps} from "./Calendar";
 import {Dayjs} from "dayjs";
 import {useContext} from "react";
-import LocaleContext from "@/pages/Calendar/LocaleContext";
-import allLocales from "@/pages/Calendar/locale";
+import LocaleContext from "./LocaleContext";
+import allLocales from "./locale";
 import cs from "classnames";
 
 interface MonthCalendarProps extends CalendarProps {

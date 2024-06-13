@@ -1,9 +1,9 @@
 import dayjs, {Dayjs} from "dayjs";
 import React, {CSSProperties, ReactNode, useState} from "react";
 import cs from "classnames";
-import LocaleContext from "@/pages/Calendar/LocaleContext";
-import Header from "@/pages/Calendar/Header";
-import MonthCalender from "@/pages/Calendar/MonthCalender";
+import LocaleContext from "./LocaleContext";
+import Header from "./Header";
+import MonthCalender from "./MonthCalender";
 
 export interface CalendarProps {
     value: Dayjs
