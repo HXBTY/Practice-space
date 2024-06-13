@@ -9,6 +9,7 @@ import UseMemoTest from "../view/hookTest/useMemoTest";
 import Calendar from "../view/Calendar";
 import IconShow from "../view/Icon/iconShow";
 import SpaceShow from "../view/Space/spaceShow"
+import MiniCalendar from "../view/MiniCalendar";
 
 const routes = [
   {
@@ -46,6 +47,10 @@ const routes = [
       {
         path: "spaceShow",
         element: <SpaceShow />
+      },
+      {
+        path: "miniCalendar",
+        element: <MiniCalendar />
       }
     ]
   },

@@ -15,6 +15,7 @@ function App() {
         <Link to={"/calendar"}>Calendar</Link>
         <Link to={"/iconShow"}>IconShow</Link>
         <Link to={"/spaceShow"}>spaceShow</Link>
+        <Link to={"/miniCalendar"}>miniCalendar</Link>
       </header>
       <Outlet />
     </div>
