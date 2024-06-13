@@ -1,4 +1,4 @@
-import Portal from "@/pages/Portal/index";
+import Portal from "./index";
 import { useEffect, useRef, useState } from "react";
 
 export default function App() {

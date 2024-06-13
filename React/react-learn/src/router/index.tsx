@@ -10,6 +10,7 @@ import Calendar from "../view/Calendar";
 import IconShow from "../view/Icon/iconShow";
 import SpaceShow from "../view/Space/spaceShow"
 import MiniCalendar from "../view/MiniCalendar";
+import PortalShow from "../view/Portal/PortalShow";
 
 const routes = [
   {
@@ -51,6 +52,10 @@ const routes = [
       {
         path: "miniCalendar",
         element: <MiniCalendar />
+      },
+      {
+        path: "portalShow",
+        element: <PortalShow />
       }
     ]
   },

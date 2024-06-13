@@ -15,8 +15,9 @@ const Portal = forwardRef((props: PortalProps, ref) => {
 
   useEffect(() => {
     setMounted(true)
-    // 如果 containerRef.current 为空，则创建一个新的元素
+    // 如果 containerRef.current 为空，则创建一个新的元素?
     if (!containerRef.current) {
+      // @ts-ignore
       containerRef.current = document.createElement("div");
       containerRef.current.className = `portal-wrapper`;
     }
