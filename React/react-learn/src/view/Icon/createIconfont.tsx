@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Icon, IconProps } from "@/pages/Icon/index";
+import { Icon, IconProps } from "./index";
 
 const loadedSet = new Set<string>()
 

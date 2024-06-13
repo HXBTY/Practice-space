@@ -13,6 +13,8 @@ function App() {
         <Link to={"/useHookTest"}>UseHookTest</Link>
         <Link to={"/useMemoTest"}>UseHookTest</Link>
         <Link to={"/calendar"}>Calendar</Link>
+        <Link to={"/iconShow"}>IconShow</Link>
+        <Link to={"/spaceShow"}>spaceShow</Link>
       </header>
       <Outlet />
     </div>

@@ -1,4 +1,4 @@
-import Space from "@/pages/Space/index";
+import Space from "./index";
 import "./index.scss";
 import { ConfigProvider } from "./ConfigProvider";
 

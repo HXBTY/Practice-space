@@ -7,6 +7,8 @@ import UseForwardRefTest from "../view/hookTest/useForwardRefTest"
 import UseHookTest from "../view/hookTest/useHookTest";
 import UseMemoTest from "../view/hookTest/useMemoTest";
 import Calendar from "../view/Calendar";
+import IconShow from "../view/Icon/iconShow";
+import SpaceShow from "../view/Space/spaceShow"
 
 const routes = [
   {
@@ -36,6 +38,14 @@ const routes = [
       {
         path: "calendar",
         element: <Calendar />
+      },
+      {
+        path: "iconShow",
+        element: <IconShow />
+      },
+      {
+        path: "spaceShow",
+        element: <SpaceShow />
       }
     ]
   },

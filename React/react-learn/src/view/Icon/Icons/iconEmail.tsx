@@ -1,4 +1,4 @@
-import {createIcon} from "@/pages/Icon/createIcon";
+import {createIcon} from "../createIcon";
 export const IconEmail = createIcon({
   content: (
     <>

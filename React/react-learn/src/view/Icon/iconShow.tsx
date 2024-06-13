@@ -1,6 +1,6 @@
-import { IconAdd } from "@/pages/Icon/Icons/iconAdd";
-import { IconEmail } from "@/pages/Icon/Icons/iconEmail";
-import { CreateIconfont } from "@/pages/Icon/createIconfont";
+import { IconAdd } from "./Icons/iconAdd";
+import { IconEmail } from "./Icons/iconEmail";
+import { CreateIconfont } from "./createIconfont";
 
 const Iconfont = CreateIconfont("//at.alicdn.com/t/c/font_2719699_1e3d0146r0f.js")
 

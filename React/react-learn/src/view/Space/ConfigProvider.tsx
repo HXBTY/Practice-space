@@ -1,4 +1,4 @@
-import { SizeType } from "@/pages/Space/index";
+import { SizeType } from "./index";
 import React, { PropsWithChildren } from "react";
 
 export interface ConfigContextType {

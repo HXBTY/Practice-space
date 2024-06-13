@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import classNames from "classnames";
-import { ConfigContext } from "@/pages/Space/ConfigProvider";
+import { ConfigContext } from "./ConfigProvider";
 
 export type SizeType = "small" | "middle" | "large" | number | undefined
 

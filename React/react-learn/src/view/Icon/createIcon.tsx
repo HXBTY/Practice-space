@@ -1,5 +1,5 @@
 import React, {forwardRef} from "react";
-import {IconProps,  Icon} from "@/pages/Icon/index";
+import {IconProps, Icon} from "./index";
 
 interface CreateIconProps {
   content: React.ReactNode;
