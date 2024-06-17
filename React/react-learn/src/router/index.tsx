@@ -11,6 +11,7 @@ import IconShow from "../view/Icon/iconShow";
 import SpaceShow from "../view/Space/spaceShow"
 import MiniCalendar from "../view/MiniCalendar";
 import PortalShow from "../view/Portal/PortalShow";
+import Suspense from "../view/suspense";
 
 const routes = [
   {
@@ -56,6 +57,10 @@ const routes = [
       {
         path: "portalShow",
         element: <PortalShow />
+      },
+      {
+        path: "suspense",
+        element: <Suspense />
       }
     ]
   },
