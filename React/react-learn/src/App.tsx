@@ -19,6 +19,7 @@ function App() {
         <Link to={"/portalShow"}>portalShow</Link>
         <Link to={"/suspense"}>suspense</Link>
         <Link to={"/controller"}>controller</Link>
+        <Link to={"/copyToClipboardShow"}>copyToClipboardShow</Link>
       </header>
       <Outlet />
     </div>

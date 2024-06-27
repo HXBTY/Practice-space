@@ -13,6 +13,7 @@ import MiniCalendar from "../view/MiniCalendar";
 import PortalShow from "../view/Portal/PortalShow";
 import Suspense from "../view/suspense";
 import Controller from "../view/controller/index";
+import CopyToClipboardShow from "../view/CopyToClipboard/copyToClipboardShow"
 
 const routes = [
   {
@@ -67,6 +68,10 @@ const routes = [
         path: "controller",
         element: <Controller />
       },
+      {
+        path: "copyToClipboardShow",
+        element: <CopyToClipboardShow />
+      }
     ]
   },
 ];
