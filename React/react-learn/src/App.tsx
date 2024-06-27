@@ -18,6 +18,7 @@ function App() {
         <Link to={"/miniCalendar"}>miniCalendar</Link>
         <Link to={"/portalShow"}>portalShow</Link>
         <Link to={"/suspense"}>suspense</Link>
+        <Link to={"/controller"}>controller</Link>
       </header>
       <Outlet />
     </div>

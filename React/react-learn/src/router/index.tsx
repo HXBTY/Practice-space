@@ -12,6 +12,7 @@ import SpaceShow from "../view/Space/spaceShow"
 import MiniCalendar from "../view/MiniCalendar";
 import PortalShow from "../view/Portal/PortalShow";
 import Suspense from "../view/suspense";
+import Controller from "../view/controller/index";
 
 const routes = [
   {
@@ -61,7 +62,11 @@ const routes = [
       {
         path: "suspense",
         element: <Suspense />
-      }
+      },
+      {
+        path: "controller",
+        element: <Controller />
+      },
     ]
   },
 ];
