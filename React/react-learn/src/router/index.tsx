@@ -14,6 +14,7 @@ import PortalShow from "../view/Portal/PortalShow";
 import Suspense from "../view/suspense";
 import Controller from "../view/controller/index";
 import CopyToClipboardShow from "../view/CopyToClipboard/copyToClipboardShow"
+import WatermarkShow from "../view/Watermark/WatermarkShow";
 
 const routes = [
   {
@@ -71,6 +72,10 @@ const routes = [
       {
         path: "copyToClipboardShow",
         element: <CopyToClipboardShow />
+      },
+      {
+        path: "watermarkShow",
+        element: <WatermarkShow/>
       }
     ]
   },

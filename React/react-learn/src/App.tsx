@@ -6,7 +6,7 @@ import { Link, Outlet } from "react-router-dom";
 function App() {
   return (
     <div>
-      <header className="header">
+      <header className="nav">
         <Link to={"/mutateObserver"}>MutateObserver</Link>
         <Link to={"/useContextTest"}>UseContextTest</Link>
         <Link to={"/useForwardRefTest"}>UseForwardRefTest</Link>
@@ -20,6 +20,7 @@ function App() {
         <Link to={"/suspense"}>suspense</Link>
         <Link to={"/controller"}>controller</Link>
         <Link to={"/copyToClipboardShow"}>copyToClipboardShow</Link>
+        <Link to={"/watermarkShow"}>watermarkShow</Link>
       </header>
       <Outlet />
     </div>
